@@ -11,7 +11,9 @@ var watson = require('watson-developer-cloud');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	res.render('index', { title: 'Home' });
+	res.render('index', {
+		title: 'Home'
+	});
 });
 
 var cpUpload = upload.fields([{ name: 'pic', maxCount: 1 }]);
