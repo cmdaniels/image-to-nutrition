@@ -34,11 +34,12 @@ router.post('/image', cpUpload, function(req, res, next) {
 			});
 			visual_recognition.classify(formData, function(error, result) {
 				if(error) {
-					return res.json({
+					res.json({
 						error: error
 					});
 				} else {
-					return res.redirect('/search/' + result.images[0].classifiers[0].classes[0].class);
+					fs.unlink(pathName);
+					res.redirect('/search/' + result.images[0].classifiers[0].classes[0].class);
 				}
 			});
 		}
