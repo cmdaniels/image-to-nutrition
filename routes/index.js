@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var request = require('request');
 var multer = require('multer');
-var upload = multer({ dest: 'uploads/' });
+var upload = multer({ dest: 'tmp/' });
 var fs = require('fs');
 var path = require('path');
 var usdaApiKey = 'JytNfbKXYcb96snmidZa1ZaPLl9xHKlFwqitvNGm';
@@ -18,11 +18,12 @@ router.get('/', function(req, res, next) {
 
 var cpUpload = upload.fields([{ name: 'pic', maxCount: 1 }]);
 router.post('/image', cpUpload, function(req, res, next) {
-	fs.rename(path.join(__dirname, '..', req.files.pic[0].path), path.join(__dirname, '..', 'uploads/' + req.files.pic[0].path.split('/')[1] + '.jpg'), function(err) {
+	var oldPathName = path.join(__dirname, '..', req.files.pic[0].path);
+	var pathName = path.join(__dirname, '..', 'tmp/' + req.files.pic[0].path.split('/')[1] + '.jpg');
+	fs.rename(oldPathName, pathName, function(err) {
 		if(err) {
 			res.json(err);
 		} else {
-			var pathName = path.join(__dirname, '..', 'uploads/' + req.files.pic[0].path.split('/')[1] + '.jpg');
 			var imageFile = fs.createReadStream(pathName);
 			var formData = {
 				image_file: imageFile
