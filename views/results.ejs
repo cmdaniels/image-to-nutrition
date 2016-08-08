@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Image-to-Nutrients | <%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  	<% if(!error) { %>
+    <h1><%= title %> (ID: <%= id %>)</h1>
+    <table>
+    	<tr>
+			<th>Nutrient</th>
+			<th>Value</th>
+		</tr>
+		<% nutrients.forEach(function(nutrient) { %>
+		<% if(+nutrient.value !== 0) { %>
+			<tr>
+				<td><%= nutrient.name %></td>
+				<td><%= nutrient.value + nutrient.unit %></td>
+			</tr>
+		<% } %>
+		<% }); %>
+    </table>
+    <% } else { %>
+    <p><%= error %></p>
+    <% } %>
+  </body>
+</html>

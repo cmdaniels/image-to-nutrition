@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Image to Nutrients | <%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Image to Nutrients</h1>
+    <h2>Search by Image</h2>
+    <form method="POST" action="/image" enctype="multipart/form-data">
+    	<input type="file" name="pic" accept="image/*" required="true">
+    	<button type="submit">Search</submit>
+    </form>
+  </body>
+</html>
