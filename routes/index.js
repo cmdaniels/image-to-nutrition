@@ -6,7 +6,7 @@ var upload = multer({ dest: 'tmp/' });
 var fs = require('fs');
 var path = require('path');
 var usdaApiKey = 'JytNfbKXYcb96snmidZa1ZaPLl9xHKlFwqitvNGm';
-var watsonApiKey = 'f464588b9f416cd8a58c218f51dda62605223b0b';
+var watsonApiKey = 'nAWKyC_ftssdzXja8p4bW2aSLCD3CCnlhfNNwE_DqRXX';
 var watson = require('watson-developer-cloud');
 
 /* GET home page. */
